@@ -12,7 +12,6 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
@@ -82,17 +81,20 @@ fun ArtworkWall(modifier: Modifier = Modifier) {
         Column {
             Image(
                 painter = image,
-                contentDescription = null,
+                contentDescription = result.toString(),
                 contentScale = ContentScale.FillWidth,
                 modifier = Modifier
                     .padding(9.dp)
-                    .fillMaxWidth()
+                    .fillMaxWidth(),
+                alignment = Alignment.Center
             )
-            ArtworkDescriptor(
+           /* ArtworkDescriptor(
                 modifier = Modifier
                     .fillMaxWidth()
-            )
-            Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
+            )*/
+            Row(
+                modifier = Modifier.align(Alignment.CenterHorizontally)
+            ) {
                 Button(onClick = {result -= 1}) {
                     Text(stringResource(R.string.previous))
                 }
