@@ -65,7 +65,17 @@ fun ArtworkWall(modifier: Modifier = Modifier) {
         1 -> R.drawable.isla_01
         2 -> R.drawable.isla_02
         3 -> R.drawable.isla_03
-        else -> R.drawable.main_image
+        4 -> R.drawable.isla_04
+        5 -> R.drawable.isla_05
+        6 -> R.drawable.isla_06
+        7 -> R.drawable.isla_07
+        8 -> R.drawable.isla_08
+        9 -> R.drawable.isla_09
+        10 -> R.drawable.isla_10
+        else -> R.drawable.error
+    }
+    if (result >10) {
+        result = 1
     }
     val image = painterResource(imageResource)
     Box(modifier) {
@@ -73,7 +83,7 @@ fun ArtworkWall(modifier: Modifier = Modifier) {
             Image(
                 painter = image,
                 contentDescription = null,
-                contentScale = ContentScale.Crop,
+                contentScale = ContentScale.FillWidth,
                 modifier = Modifier
                     .padding(9.dp)
                     .fillMaxWidth()
