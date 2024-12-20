@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Art Space</string>
+    <string name="title">Artwork Title</string>
+    <string name="photographer">Simon Anger</string>
+    <string name="previous">Previous</string>
+    <string name="next">Next</string>
+</resources>
