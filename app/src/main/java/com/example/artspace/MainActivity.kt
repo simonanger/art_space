@@ -13,6 +13,8 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.widthIn
 import androidx.compose.material3.Button
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -73,9 +75,7 @@ fun ArtworkWall(modifier: Modifier = Modifier) {
         10 -> R.drawable.isla_10
         else -> R.drawable.error
     }
-    if (result >10) {
-        result = 1
-    }
+
     val image = painterResource(imageResource)
     Box(modifier) {
         Column {
@@ -92,19 +92,38 @@ fun ArtworkWall(modifier: Modifier = Modifier) {
                 modifier = Modifier
                     .fillMaxWidth()
             )*/
+            Spacer(modifier = Modifier.weight(1f))
             Row(
-                modifier = Modifier.align(Alignment.CenterHorizontally)
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .padding(bottom = 40.dp),
+                horizontalArrangement = Arrangement.SpaceEvenly
             ) {
-                Button(onClick = {result -= 1}) {
+                Button(
+                    onClick = {if(result > 1) {result -= 1} else result = 10},
+                    modifier = Modifier.widthIn(150.dp)
+                ) {
                     Text(stringResource(R.string.previous))
                 }
                 Spacer(modifier = Modifier.padding(6.dp))
-                Button(onClick = { result += 1 }) {
+                Button(
+                    onClick = {if(result < 10) {result += 1} else result = 1 },
+                    modifier = Modifier.widthIn(150.dp)
+                ) {
                     Text(stringResource(R.string.next))
                 }
             }
         }
     }
+}
+
+fun nextImage(imageId: Int): Int {
+    var result = 1
+    if(imageId == 10) {
+        return result
+    } else result += 1
+    return result
+
 }
 
 @Composable
