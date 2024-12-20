@@ -60,7 +60,14 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview
 @Composable
 fun ArtworkWall(modifier: Modifier = Modifier) {
-    val image = painterResource(R.drawable.main_image)
+    var result by remember { mutableStateOf(1) }
+    val imageResource = when (result) {
+        1 -> R.drawable.main_image
+        2 -> R.drawable.metro
+        3 -> R.drawable.tlon
+        else -> R.drawable.main_image
+    }
+    val image = painterResource(imageResource)
     Box(modifier) {
         Column {
             Image(
@@ -69,15 +76,21 @@ fun ArtworkWall(modifier: Modifier = Modifier) {
                 contentScale = ContentScale.Crop,
                 modifier = Modifier
                     .padding(9.dp)
+                    .fillMaxWidth()
             )
             ArtworkDescriptor(
                 modifier = Modifier
                     .fillMaxWidth()
             )
-            Buttons(
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
-            )
+            Row(modifier = Modifier.align(Alignment.CenterHorizontally)) {
+                Button(onClick = {result -= 1}) {
+                    Text(stringResource(R.string.previous))
+                }
+                Spacer(modifier = Modifier.padding(6.dp))
+                Button(onClick = { result += 1 }) {
+                    Text(stringResource(R.string.next))
+                }
+            }
         }
     }
 }
