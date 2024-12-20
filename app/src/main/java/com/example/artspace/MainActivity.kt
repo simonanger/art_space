@@ -62,9 +62,9 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 fun ArtworkWall(modifier: Modifier = Modifier) {
     var result by remember { mutableStateOf(1) }
     val imageResource = when (result) {
-        1 -> R.drawable.main_image
-        2 -> R.drawable.metro
-        3 -> R.drawable.tlon
+        1 -> R.drawable.isla_01
+        2 -> R.drawable.isla_02
+        3 -> R.drawable.isla_03
         else -> R.drawable.main_image
     }
     val image = painterResource(imageResource)
